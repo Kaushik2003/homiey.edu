@@ -1,18 +1,42 @@
-import { NextResponse } from 'next/server'
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import { NextResponse } from "next/server";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!)
-const model = genAI.getGenerativeModel({ model: "gemini-pro" })
+// Initialize the Google Generative AI with your API key
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || "");
 
-export async function POST(request: Request) {
-  const { classname, subj, topic } = await request.json()
+export async function POST(req: Request) {
+  const { classname, subj, topic, numQuestions = 5 } = await req.json();
 
-  const prompt = `Create a quiz of 10 questions for class ${classname}, subject ${subj}, on the topic '${topic}'. Ensure the quiz is well-structured and relevant and provide options too. Avoid unnecessary information.`
-  
-  const result = await model.generateContent(prompt)
-  const response = await result.response
-  const text = response.text()
+  const prompt = `Generate a quiz for a ${classname} class, subject: ${subj}, topic: ${topic} with ${numQuestions} multiple-choice questions. Format the output as a JSON array of objects, where each object has the following structure:
+  {
+    "question": "The question text",
+    "options": ["Option A", "Option B", "Option C", "Option D"],
+    "correctAnswer": "The correct option (A, B, C, or D)"
+  }
+  Ensure that the response does not include markdown formatting, such as triple backticks.`;  // Prevents AI from using ```json
 
-  return NextResponse.json({ response: text })
+  try {
+    // Use the gemini-pro model
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    let text = response.text().trim();
+
+    // Remove potential Markdown code blocks
+    if (text.startsWith("```json")) {
+      text = text.replace(/^```json/, "").replace(/```$/, "").trim();
+    }
+
+    // Parse the cleaned JSON response
+    const quiz = JSON.parse(text);
+
+    // Return the quiz data
+    return NextResponse.json({ quiz });
+  } catch (error) {
+    console.error("Error generating quiz:", error);
+    return NextResponse.json(
+      { error: "Failed to generate quiz" },
+      { status: 500 }
+    );
+  }
 }
-
