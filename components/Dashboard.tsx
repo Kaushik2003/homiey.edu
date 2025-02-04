@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useUser } from "@clerk/clerk-react";
 import Doubt from "@/app/doubt/page";
 import PaperGen from "@/app/paper-gen/page";
 import Quiz from "@/app/quiz/page";
+import BlurText from "./ui/BlurText";
 
-// Define props type for content components
-interface DashboardContentProps {
-  goBack: () => void;
+interface DashboardProps {
+  activeTab: "ask" | "quiz" | "generate" | null;
+  setActiveTab: (tab: "ask" | "quiz" | "generate" | null) => void;
 }
 
-
-export const Dashboard: React.FC = () => {
+export const Dashboard: React.FC<DashboardProps> = ({ activeTab, setActiveTab }) => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState<'ask' | 'quiz' | 'generate' | null>(null);
+  const { user } = useUser();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -34,6 +35,32 @@ export const Dashboard: React.FC = () => {
           </div>
         ) : (
           <AnimatePresence mode="wait">
+            <motion.div
+              key="cards"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              {!activeTab && !user && (
+                <BlurText
+                  text="Welcome to Aitor!"
+                  delay={20}
+                  animateBy="letters"
+                  direction="top"
+                  className="text-5xl mb-8"
+                />
+              )}
+              {!activeTab && user && (
+                <BlurText
+                  text={`Welcome to Aitor, ${user?.firstName || " "}!`}
+                  delay={20}
+                  animateBy="letters"
+                  direction="top"
+                  className="text-5xl mb-8"
+                />
+              )}
+            </motion.div>
+
             {!activeTab ? (
               <motion.div
                 key="cards"
@@ -42,30 +69,35 @@ export const Dashboard: React.FC = () => {
                 exit={{ opacity: 0 }}
                 className="grid grid-cols-2 md:grid-cols-2 gap-10"
               >
-                {[{
-                  title: "Ask a Doubt",
-                  description: "Get quick answers to your academic questions from experts.",
-                  tab: "ask"
-                }, {
-                  title: "Take a Quiz",
-                  description: "Test your knowledge with interactive quizzes.",
-                  tab: "quiz"
-                }, {
-                  title: "Generate Question Paper",
-                  description: "Create personalized question papers for practice.",
-                  tab: "generate"
-                }, {
-                  title: "PDF-Review",
-                  description: "Get Personalized Reviews on your PDFs.",
-                  tab: "generate"
-                }].map(({ title, description, tab }) => (
+                {[
+                  {
+                    title: "Ask a Doubt",
+                    description: "Get quick answers to your academic questions from experts.",
+                    tab: "ask",
+                  },
+                  {
+                    title: "Take a Quiz",
+                    description: "Test your knowledge with interactive quizzes.",
+                    tab: "quiz",
+                  },
+                  {
+                    title: "Generate Question Paper",
+                    description: "Create personalized question papers for practice.",
+                    tab: "generate",
+                  },
+                  {
+                    title: "PDF-Review",
+                    description: "Get Personalized Reviews on your PDFs.",
+                    tab: "generate",
+                  },
+                ].map(({ title, description, tab }) => (
                   <motion.div
                     key={tab}
-                    className="p-10 rounded-lg bg-neutral-100 dark:bg-neutral-700 shadow-md border border-neutral-200 dark:border-neutral-600 flex flex-col justify-between"
+                    className="p-10 rounded-lg bg-neutral-100 dark:bg-neutral-700 shadow-md border border-neutral-200 dark:border-neutral-600 flex flex-col justify-between cursor-pointer"
                     initial={{ scale: 1 }}
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    onClick={() => setActiveTab(tab as any)}
+                    onClick={() => setActiveTab(tab as "ask" | "quiz" | "generate")}
                   >
                     <h3 className="text-xl font-semibold text-neutral-800 dark:text-neutral-100">{title}</h3>
                     <p className="text-base text-neutral-600 dark:text-neutral-400">{description}</p>
@@ -74,14 +106,14 @@ export const Dashboard: React.FC = () => {
               </motion.div>
             ) : (
               <motion.div
-                key="content"
+                key={activeTab}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                {activeTab === 'ask' && <Doubt goBack={goBack} />}
-                {activeTab === 'quiz' && <Quiz goBack={goBack} />}
-                {activeTab === 'generate' && <PaperGen goBack={goBack} />}
+                {activeTab === "ask" && <Doubt goBack={goBack} />}
+                {activeTab === "quiz" && <Quiz goBack={goBack} />}
+                {activeTab === "generate" && <PaperGen goBack={goBack} />}
               </motion.div>
             )}
           </AnimatePresence>

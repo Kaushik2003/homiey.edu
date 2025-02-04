@@ -1,49 +1,52 @@
-"use client"
-import React, { useState, useEffect } from "react"
-import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar"
+"use client";
+import React, { useState } from "react";
+import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
 import {
-  IconArrowLeft,
-  IconAugmentedReality,
   IconBrandTabler,
   IconQuestionMark,
-  IconSettings,
   IconUserBolt,
-} from "@tabler/icons-react"
-import Link from "next/link"
-import { AnimatePresence, motion } from "framer-motion"
-import Image from "next/image"
-import { cn } from "@/lib/utils"
-import { Dashboard } from "./Dashboard"
-import { SignInButton, SignUpButton, useAuth, UserButton } from "@clerk/clerk-react"
-import { LogIn, LogInIcon, LogOutIcon, Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
+  IconAugmentedReality,
+} from "@tabler/icons-react";
+import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { Dashboard } from "./Dashboard";
+import { SignInButton, SignUpButton, useAuth, UserButton } from "@clerk/clerk-react";
+import { LogOutIcon, LogInIcon, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export function SidebarDemo() {
+  const [open, setOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<"ask" | "quiz" | "generate" | null>(null);
+  const { isSignedIn } = useAuth();
+  const { theme, setTheme } = useTheme();
+
   const links = [
     {
       label: "Dashboard",
       href: "#",
       icon: <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
+      onClick: () => setActiveTab(null),
     },
     {
       label: "Ask a Doubt",
       href: "#",
       icon: <IconQuestionMark className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
+      onClick: () => setActiveTab("ask"),
     },
     {
       label: "Take a Quiz",
       href: "#",
       icon: <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
+      onClick: () => setActiveTab("quiz"),
     },
     {
       label: "Generate",
       href: "#",
       icon: <IconAugmentedReality className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
+      onClick: () => setActiveTab("generate"),
     },
-  ]
-  const [open, setOpen] = useState(false)
-  const { isSignedIn } = useAuth()
-  const { theme, setTheme } = useTheme()
+  ];
 
   return (
     <div
@@ -58,7 +61,9 @@ export function SidebarDemo() {
             {open ? <Logo /> : <LogoIcon />}
             <div className="mt-8 flex flex-col gap-2">
               {links.map((link, idx) => (
-                <SidebarLink key={idx} link={link} />
+                <button key={idx} onClick={link.onClick}>
+                <SidebarLink link={link} />
+              </button>
               ))}
             </div>
           </div>
@@ -92,23 +97,10 @@ export function SidebarDemo() {
                       </AnimatePresence>
                     ),
                   }}
+                  
                 />
               ) : (
                 <>
-                  <SidebarLink
-                    link={{
-                      label: theme === "dark" ? "Light Mode" : "Dark Mode",
-                      href: "#",
-                      icon: (
-                        <button
-                          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                          className=" rounded-md hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors"
-                        >
-                          {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-                        </button>
-                      ),
-                    }}
-                  />
                   <SidebarLink
                     link={{
                       label: "Sign in",
@@ -116,8 +108,8 @@ export function SidebarDemo() {
                       icon: (
                         <button>
                           <SignInButton>
-                          <LogOutIcon />
-                        </SignInButton>
+                            <LogOutIcon />
+                          </SignInButton>
                         </button>
                       ),
                     }}
@@ -128,9 +120,9 @@ export function SidebarDemo() {
                       href: "#",
                       icon: (
                         <button>
-                        <SignUpButton>
-                          <LogInIcon />
-                        </SignUpButton>
+                          <SignUpButton>
+                            <LogInIcon />
+                          </SignUpButton>
                         </button>
                       ),
                     }}
@@ -141,12 +133,12 @@ export function SidebarDemo() {
           </div>
         </SidebarBody>
       </Sidebar>
-      <Dashboard />
+      <Dashboard activeTab={activeTab} setActiveTab={setActiveTab} />
     </div>
-  )
+  );
 }
 
-export const Logo = () => {
+const Logo = () => {
   return (
     <Link
       href="#"
@@ -157,10 +149,10 @@ export const Logo = () => {
         Aitor
       </motion.span>
     </Link>
-  )
-}
+  );
+};
 
-export const LogoIcon = () => {
+const LogoIcon = () => {
   return (
     <Link
       href="#"
@@ -168,6 +160,5 @@ export const LogoIcon = () => {
     >
       <div className="h-5 w-6 bg-black dark:bg-white rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm flex-shrink-0" />
     </Link>
-  )
-}
-
+  );
+};
