@@ -6,9 +6,9 @@ import PaperGen from "@/app/paper-gen/page";
 import Quiz from "@/app/quiz/page";
 
 // Define props type for content components
-interface DashboardContentProps {
-  goBack: () => void;
-}
+// interface DashboardContentProps {
+//   goBack: () => void;
+// }
 
 
 export const Dashboard: React.FC = () => {

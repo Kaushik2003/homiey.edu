@@ -4,7 +4,7 @@ import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
 import { ThemeProvider } from 'next-themes'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 const poppins = Poppins({ weight: ["400"], subsets: ['latin'] })
 
 export const metadata: Metadata = {
