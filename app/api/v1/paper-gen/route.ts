@@ -9,7 +9,8 @@ export async function POST(request: Request) {
     const { classname, subj, topic } = await request.json();
 
     // Create the prompt for Google Gemini to generate the question paper content
-    const prompt = `Generate a question paper for class ${classname}, subject ${subj}, on the topic '${topic}'. The paper should help students score full marks in exams. Provide only essential information and do not use any markup.`;
+    const prompt = `Create a question paper for class ${classname}, subject ${subj}, on the topic '${topic}'. The paper should be designed to help students score full marks in exams. Ensure the content is concise and to the point, with no extra markup. Structure the paper into three distinct sections: Section A, Section B, and Section C, with appropriate questions for each.`;
+
 
     // Use Google Gemini to generate the content
     const result = await model.generateContent(prompt);
