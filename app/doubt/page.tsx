@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Card,CardContent } from "@/components/ui/card"
-import { Inter} from 'next/font/google'
+// import { Inter} from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
 interface DoubtProps {
