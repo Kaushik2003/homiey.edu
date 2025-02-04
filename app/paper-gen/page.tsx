@@ -5,7 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardDescription, CardHeader } from "@/components/ui/card";
 
-export default function PaperGen() {
+interface DoubtProps {
+  goBack: () => void;
+}
+export default function PaperGen({ goBack }: DoubtProps) {
   const [classname, setClassname] = useState("");
   const [subj, setSubj] = useState("");
   const [topic, setTopic] = useState("");
