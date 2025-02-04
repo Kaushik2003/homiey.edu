@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter, Poppins } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import './globals.css'
-import Chat from '../components/Chat'
 import { ClerkProvider } from '@clerk/nextjs'
 import { ThemeProvider } from 'next-themes'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 const poppins = Poppins({ weight: ["400"], subsets: ['latin'] })
 
 export const metadata: Metadata = {
