@@ -27,7 +27,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab, setActiveTab })
   const goBack = () => setActiveTab(null);
 
   return (
-    <div className="flex justify-center items-center w-full h-full bg-white border-neutral-200 dark:bg-neutral-900">
+    <div className="flex justify-center items-center w-full h-full bg-white border-neutral-200 dark:bg-neutral-950">
       <div className="p-6 md:p-1 rounded-lg w-full max-w-4xl">
         {loading ? (
           <div className="space-y-4">

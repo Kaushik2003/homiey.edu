@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
           mimeType: "application/pdf",
         },
       },
-      "Provide a grade values clarity, coherence, and engagement for the writing context on a scale of 1 to 100.",
+      "Provide a grade values clarity, coherence, and engagement for the writing context on a scale of 1 to 100 , keep it  short and precise .",
     ]);
 
     let summary = result.response.text();

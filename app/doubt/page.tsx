@@ -79,10 +79,10 @@ export default function LearningInterfaceComponent({ goBack }: DoubtProps) {
   if (!mounted) return null
 
   return (
-    <div className={`flex bg-background text-foreground`}>
+    <div className={`flex  text-foreground`}>
       <Button
         onClick={goBack}
-        className="fixed top-4 right-4 mb-4 rounded-3xl text-gray-100 hover:text-gray-300"
+        className="fixed top-4 right-4 mb-4 rounded-3xl text-gray-100 hover:text-gray-300 dark:text-black"
       >
         ← Back
       </Button>

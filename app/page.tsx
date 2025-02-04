@@ -11,7 +11,7 @@ export default function Home() {
       <main >
         <Hero />
         <Features />
-        <FAQ />
+        {/* <FAQ /> */}
       </main>
       <Footer />
     </div>

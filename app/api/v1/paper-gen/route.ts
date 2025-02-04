@@ -1,45 +1,25 @@
-import { NextResponse } from 'next/server'
-import { GoogleGenerativeAI } from '@google/generative-ai'
-import PDFDocument from 'pdfkit'
+import { NextResponse } from 'next/server';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!)
-const model = genAI.getGenerativeModel({ model: "gemini-pro" })
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
+const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
 export async function POST(request: Request) {
-  const { classname, subj, topic } = await request.json()
+  try {
+    const { classname, subj, topic } = await request.json();
 
-  const prompt = `Generate a question paper for class ${classname}, subject ${subj}, on the topic '${topic}'. The paper should help students score full marks in exams. Provide only essential information and not use markup.`
-  
-  const result = await model.generateContent(prompt)
-  const response = await result.response
-  const text = response.text()
+    // Create the prompt for Google Gemini to generate the question paper content
+    const prompt = `Create a question paper for class ${classname}, subject ${subj}, on the topic '${topic}'. The paper should be designed to help students score full marks in exams. Ensure the content is concise and to the point, with no extra markup. Structure the paper into three distinct sections: Section A, Section B, and Section C, with appropriate questions for each.`;
 
-  // Create PDF
-  const doc = new PDFDocument()
-  const chunks: Uint8Array[] = []
 
-  doc.on('data', (chunk) => chunks.push(chunk))
-  doc.on('end', () => {
-    const pdfBuffer = Buffer.concat(chunks)
-    return new NextResponse(pdfBuffer, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/pdf',
-        'Content-Disposition': `attachment; filename=question_paper_${classname}_${subj}_${topic}.pdf`,
-      },
-    })
-  })
+    // Use Google Gemini to generate the content
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const content = response.text();
 
-  doc.fontSize(16).text("Generated Question Paper", { align: "center" }).moveDown()
-  doc.fontSize(12)
-    .text(`Class: ${classname || "Not Specified"}`, { align: "left" })
-    .text(`Subject: ${subj || "Not Specified"}`, { align: "left" })
-    .text(`Topic: ${topic || "Not Specified"}`, { align: "left" })
-    .moveDown()
-  doc.fontSize(12).text(text, { align: "left", lineGap: 8 })
-
-  doc.end()
-
-  return new NextResponse(null, { status: 200 })
+    // Return the generated content in JSON format
+    return NextResponse.json({ content });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 }
-

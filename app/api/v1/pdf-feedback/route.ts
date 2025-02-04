@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
           mimeType: "application/pdf",
         },
       },
-      "Provide a summary based on the context and categorize them into a brief summary, strengths, improvements, next steps, and suggestions.",
+      "Provide a summary based on the context and categorize them into a brief summary, strengths, improvements, next steps, and suggestions, keep it  short and precise.",
     ]);
 
     let summaryText = result.response.text();
