@@ -22,7 +22,7 @@ export default function RootLayout({
       
       <html lang="en">
         <body className={` ${poppins.className}`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true}>
             {children}
           </ThemeProvider>
           
