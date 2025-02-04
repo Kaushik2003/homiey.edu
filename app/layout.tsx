@@ -5,7 +5,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { ThemeProvider } from 'next-themes'
 
 // const inter = Inter({ subsets: ['latin'] })
-const poppins = Poppins({ weight: ["400"], subsets: ['latin'] })
+const poppins = Poppins({ weight: ["400"], subsets: ['latin'] , variable: '--font-poppins'})
 
 export const metadata: Metadata = {
   title: 'AI Tutor',

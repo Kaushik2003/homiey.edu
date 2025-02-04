@@ -6,10 +6,11 @@ import Doubt from "@/app/doubt/page";
 import PaperGen from "@/app/paper-gen/page";
 import Quiz from "@/app/quiz/page";
 import BlurText from "./ui/BlurText";
+import PdfReview from "@/app/pdf/page";
 
 interface DashboardProps {
-  activeTab: "ask" | "quiz" | "generate" | null;
-  setActiveTab: (tab: "ask" | "quiz" | "generate" | null) => void;
+  activeTab: "ask" | "quiz" | "generate" | "pdf" | null;
+  setActiveTab: (tab: "ask" | "quiz" | "generate" | "pdf" | null) => void;
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({ activeTab, setActiveTab }) => {
@@ -89,7 +90,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab, setActiveTab })
                   {
                     title: "PDF-Review",
                     description: "Get Personalized Reviews on your PDFs.",
-                    tab: "generate",
+                    tab: "pdf",
                   },
                 ].map(({ title, description, tab }) => (
                   <motion.div
@@ -115,6 +116,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab, setActiveTab })
                 {activeTab === "ask" && <Doubt goBack={goBack} />}
                 {activeTab === "quiz" && <Quiz goBack={goBack} />}
                 {activeTab === "generate" && <PaperGen goBack={goBack} />}
+                {activeTab === "pdf" && <PdfReview goBack={goBack}/>}
               </motion.div>
             )}
           </AnimatePresence>

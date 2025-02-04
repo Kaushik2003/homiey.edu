@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -9,6 +10,9 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			Poppins: ['var(--var-poppins)'],
+		},
 		keyframes: {
 			gradient: {
 				'0%': { backgroundPosition: '0% 50%' },
@@ -87,7 +91,7 @@ const config: Config = {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
-  		}
+  		},
   	}
   },
   plugins: [require("tailwindcss-animate")],
