@@ -1,12 +1,18 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
-export default function PdfReview() {
+interface DoubtProps {
+  goBack: () => void;
+}
+
+export default function PdfReview({ goBack }: DoubtProps) {
   const [driveLink, setDriveLink] = useState("");
   const [summary, setSummary] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +40,13 @@ export default function PdfReview() {
 
   return (
     <div className="max-w-lg mx-auto p-6 bg-white rounded-xl shadow-md">
-      <h2 className="text-xl font-semibold mb-4">PDF Review</h2>
+      <Button
+        onClick={goBack}
+        className="fixed top-4 right-4 mb-4 rounded-3xl text-gray-100 hover:text-gray-300"
+      >
+        ← Back
+      </Button>
+      <h2 className="text-2xl font-normal mb-4">PDF Review</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"

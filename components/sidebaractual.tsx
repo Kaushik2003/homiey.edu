@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
 import {
   IconBrandTabler,
@@ -14,12 +14,20 @@ import { Dashboard } from "./Dashboard";
 import { SignInButton, SignUpButton, useAuth, UserButton } from "@clerk/clerk-react";
 import { LogOutIcon, LogInIcon, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { dark } from "@clerk/themes";
 
 export function SidebarDemo() {
   const [open, setOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<"ask" | "quiz" | "generate" | null>(null);
+  const [activeTab, setActiveTab] = useState<"ask" | "quiz" | "generate" | "pdf" | null>(null);
   const { isSignedIn } = useAuth();
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   const links = [
     {
@@ -62,13 +70,25 @@ export function SidebarDemo() {
             <div className="mt-8 flex flex-col gap-2">
               {links.map((link, idx) => (
                 <button key={idx} onClick={link.onClick}>
-                <SidebarLink link={link} />
-              </button>
+                  <SidebarLink link={link} />
+                </button>
               ))}
             </div>
           </div>
           <div>
             <div className="mt-8 flex flex-col gap-4">
+              {/* Dark Mode Toggle Button */}
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="flex items-center justify-center p-2 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5 text-neutral-700 dark:text-neutral-200" />
+                ) : (
+                  <Moon className="h-5 w-5 text-neutral-700 dark:text-neutral-200" />
+                )}
+              </button>
+
               {isSignedIn ? (
                 <SidebarLink
                   link={{
@@ -85,10 +105,12 @@ export function SidebarDemo() {
                         >
                           <UserButton
                             appearance={{
+                              baseTheme: (theme === "dark" ? dark : undefined),
                               elements: {
                                 userButtonBox: {
                                   flexDirection: "row-reverse",
                                 },
+                                userButtonOuterIdentifier: "font-poppins text-sm",
                               },
                             }}
                             showName={open}
@@ -97,7 +119,6 @@ export function SidebarDemo() {
                       </AnimatePresence>
                     ),
                   }}
-                  
                 />
               ) : (
                 <>
