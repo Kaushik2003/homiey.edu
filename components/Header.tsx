@@ -1,45 +1,35 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+"use client";
+import React from "react";
+import { FloatingNav } from "../components/ui/floating-navbar";
+import { IconHome, IconBook, IconMessageCircle, IconUser } from "@tabler/icons-react";
 
-export default function Header() {
+export default function FloatingNavDemo() {
+  const navItems = [
+    {
+      name: "Home",
+      link: "/",
+      icon: <IconHome className="h-5 w-5 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Features",
+      link: "/courses",
+      icon: <IconBook className="h-5 w-5 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "FAQ",
+      link: "/tutors",
+      icon: <IconUser className="h-5 w-5 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Contact",
+      link: "/contact",
+      icon: <IconMessageCircle className="h-5 w-5 text-neutral-500 dark:text-white" />,
+    },
+  ];
   return (
-    <header className="py-6 px-6 bg-white shadow-sm">
-      <nav className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-primary">
-          🤖 AI Tutor
-        </Link>
-        <ul className="flex space-x-1 bg-gray-100 rounded-full p-1">
-          <li>
-            <Link
-              href="#features"
-              className="inline-block px-4 py-2 rounded-full hover:bg-white hover:shadow-sm transition-all duration-200"
-            >
-              Features
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#faq"
-              className="inline-block px-4 py-2 rounded-full hover:bg-white hover:shadow-sm transition-all duration-200"
-            >
-              FAQ
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#contact"
-              className="inline-block px-4 py-2 rounded-full hover:bg-white hover:shadow-sm transition-all duration-200"
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
-       <Link href="/dashboard">
-        <Button variant="default" className="rounded-full bg-primary text-white hover:bg-primary/90">
-          Start Learning
-        </Button></Link>
-      </nav>
-    </header>
-  )
+    <div className="relative w-full pt-4">
+      <FloatingNav navItems={navItems} />
+       
+    </div>
+  );
 }
-

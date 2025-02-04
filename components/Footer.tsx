@@ -1,57 +1,20 @@
 import Link from "next/link"
-import { Linkedin, Twitter, Youtube } from "lucide-react"
+import { GithubIcon } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-gray-800 text-white py-12">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/" className="hover:text-primary">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="#features" className="hover:text-primary">
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link href="#faq" className="hover:text-primary">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="#contact" className="hover:text-primary">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <p>Email: support@aitutor.com</p>
-            <p>Phone: +1 (123) 456-7890</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
-              <Link href="#" className="hover:text-primary">
-                <Linkedin />
-              </Link>
-              <Link href="#" className="hover:text-primary">
-                <Twitter />
-              </Link>
-              <Link href="#" className="hover:text-primary">
-                <Youtube />
-              </Link>
-            </div>
-          </div>
-          <div>
-            <p>&copy; 2025 AI Tutor. All Rights Reserved.</p>
+    <footer id="contact" >
+      <div className="border-t border-gray-700  py-4 ">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+          <span>&copy; 2025 googlesolution.ai</span>
+          <div className="flex space-x-6">
+            {/* <Link href="#" className="hover:text-white">Contact</Link>
+            <Link href="#" className="hover:text-white"><X/></Link> */}
+            <Link href="#" className="hover:text-white"><button className="shadow-[inset_0_0_0_2px_#616467] text-black px-8 py-2 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
+            <GithubIcon />
+            </button>    
+            </Link>
+
           </div>
         </div>
       </div>
