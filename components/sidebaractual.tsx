@@ -1,21 +1,18 @@
 "use client"
-import React, { useState, useEffect } from "react"
+import React, { useState} from "react"
 import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar"
 import {
-  IconArrowLeft,
   IconAugmentedReality,
   IconBrandTabler,
   IconQuestionMark,
-  IconSettings,
   IconUserBolt,
 } from "@tabler/icons-react"
 import Link from "next/link"
 import { AnimatePresence, motion } from "framer-motion"
-import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { Dashboard } from "./Dashboard"
 import { SignInButton, SignUpButton, useAuth, UserButton } from "@clerk/clerk-react"
-import { LogIn, LogInIcon, LogOutIcon, Moon, Sun } from "lucide-react"
+import {  LogInIcon, LogOutIcon, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
 export function SidebarDemo() {
