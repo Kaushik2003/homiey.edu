@@ -5,7 +5,7 @@ export default function CTA() {
     <section className="container mx-auto py-20">
       <div className="bg-gray-50 rounded-3xl p-12 relative overflow-hidden">
         <div className="max-w-2xl relative z-10">
-          <h2 className="text-3xl font-bold mb-4">Let's make things happen</h2>
+          <h2 className="text-3xl font-bold mb-4">Let&apos;s make things happen</h2>
           <p className="text-gray-600 mb-8">
             Contact us today to learn more about how our digital marketing services can help your business grow and
             succeed online.
@@ -20,6 +20,5 @@ export default function CTA() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
