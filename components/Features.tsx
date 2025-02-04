@@ -100,13 +100,21 @@ const SkeletonTwo = () => (
 );
 
 const SkeletonThree = () => (
-  <motion.div
-    className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2 p-4"
-    style={{
-      background: "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
-      backgroundSize: "400% 400%",
-    }}
-  />
+  // <motion.div
+  //   className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2 p-4"
+  //   style={{
+  //     background: "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
+  //     backgroundSize: "400% 400%",
+  //   }}
+  // />
+  <Image
+          src="https://i.pinimg.com/736x/21/77/47/217747ba77843033acffdc614475be56.jpg"
+          alt="avatar"
+          height="2000"
+          width="2000"
+          className="max-h-44 w-full"
+        />
+
 );
 
 const SkeletonFour = () => (
