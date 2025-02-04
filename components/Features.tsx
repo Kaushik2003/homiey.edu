@@ -1,51 +1,73 @@
-import { HelpCircle, BookOpen, FileText, FileSearch } from "lucide-react"
+"use client";
+import { cn } from "@/lib/utils";
+import React from "react";
+import { BentoGrid, BentoGridItem } from "../components/ui/bento-grid";
+import { HelpCircle, BookOpen, FileText, FileSearch } from "lucide-react";
+import { motion } from "framer-motion";
 
-const features = [
+export default function BentoGridCustomDemo() {
+  return (
+    <BentoGrid className="max-w-4xl mx-auto md:auto-rows-[20rem]">
+      {items.map((item, i) => (
+        <BentoGridItem
+          key={i}
+          title={item.title}
+          description={item.description}
+          header={item.header}
+          className={cn("[&>p:text-lg]", item.className)}
+          icon={item.icon}
+        />
+      ))}
+    </BentoGrid>
+  );
+}
+
+const AnimatedSkeleton = () => {
+  const variants = {
+    initial: { opacity: 0.5, scale: 1 },
+    animate: {
+      opacity: 1,
+      scale: 1.05,
+      transition: { duration: 0.3, yoyo: Infinity },
+    },
+  };
+  return (
+    <motion.div
+      initial="initial"
+      animate="animate"
+      className="flex flex-1 w-full h-full min-h-[6rem] bg-neutral-200 dark:bg-neutral-800 rounded-xl border border-neutral-300 dark:border-neutral-700"
+    />
+  );
+};
+
+const items = [
   {
-    icon: HelpCircle,
     title: "Instant Doubt Resolution",
     description: "Have a question? Get precise and clear explanations instantly for any topic.",
+    header: <AnimatedSkeleton />,
+    className: "md:col-span-2",
+    icon: <HelpCircle className="h-5 w-5 text-neutral-600 dark:text-neutral-300" />,
   },
   {
-    icon: BookOpen,
     title: "AI-Generated Quizzes",
     description: "Prepare better with structured quizzes tailored to your subject and class.",
+    header: <AnimatedSkeleton />,
+    className: "md:col-span-1",
+    icon: <BookOpen className="h-5 w-5 text-neutral-600 dark:text-neutral-300" />,
   },
   {
-    icon: FileText,
     title: "Custom Question Papers",
     description: "Generate question papers designed to help you score full marks in exams.",
+    header: <AnimatedSkeleton />,
+    className: "md:col-span-1",
+    icon: <FileText className="h-5 w-5 text-neutral-600 dark:text-neutral-300" />,
   },
   {
-    icon: FileSearch,
     title: "Smart PDF Review & Summarization",
     description: "Upload PDFs, get summaries, and receive AI-generated feedback on clarity, coherence, and engagement.",
+    header: <AnimatedSkeleton />,
+    className: "md:col-span-2",
+    icon: <FileSearch className="h-5 w-5 text-neutral-600 dark:text-neutral-300" />,
   },
-]
-
-export default function Features() {
-  return (
-    <section id="features" className="py-20 bg-gray-50">
-      <div className="container mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">Our Features</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-            >
-              <div className="flex items-center mb-4">
-                <div className="bg-primary/10 p-3 rounded-full mr-4">
-                  <feature.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold">{feature.title}</h3>
-              </div>
-              <p className="text-gray-600">{feature.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
+];
 
