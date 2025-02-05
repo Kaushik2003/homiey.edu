@@ -1,80 +1,120 @@
-import { useState } from "react";
-import { pdf, Document, Page, Text, StyleSheet } from "@react-pdf/renderer";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardDescription, CardHeader } from "@/components/ui/card";
+"use client"
+
+import { useState } from "react"
+import { pdf, Document, Page, Text } from "@react-pdf/renderer"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Card, CardDescription, CardHeader } from "@/components/ui/card"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 interface DoubtProps {
-  goBack: () => void;
+  goBack: () => void
 }
-export default function PaperGen({ goBack }: DoubtProps) {
-  const [classname, setClassname] = useState("");
-  const [subj, setSubj] = useState("");
-  const [topic, setTopic] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  // Function to fetch generated paper content and create a downloadable PDF.
+export default function PaperGen({ goBack }: DoubtProps) {
+  const [classname, setClassname] = useState("")
+  const [subj, setSubj] = useState("")
+  const [topic, setTopic] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [pdfBlob, setPdfBlob] = useState<Blob | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [showPdfPreview, setShowPdfPreview] = useState(true) // Toggle for PDF preview
+
+  // Inline styles for PDF components (react-pdf doesn't support Tailwind classes)
+  const pageStyle = {
+    padding: 40,
+    backgroundColor: "#ffffff",
+  }
+
+  const headerStyle = {
+    fontSize: 24,
+    fontWeight: "bold" as "bold",
+    textAlign: "center" as "center",
+    marginBottom: 30,
+    textTransform: "uppercase" as "uppercase",
+  }
+
+  const textStyle = {
+    fontSize: 14,
+    marginBottom: 15,
+    lineHeight: 1.6,
+  }
+
+  // Generate the PDF by calling your API and rendering a Document with react-pdf.
   const generatePaper = async () => {
     if (!classname.trim() || !subj.trim() || !topic.trim()) {
-      setError("Please fill in all fields");
-      return;
+      setError("Please fill in all fields")
+      return
     }
-    setLoading(true);
-    setError(null);
+    setLoading(true)
+    setError(null)
     try {
-      // Call the API route to generate paper content via Google Gemini.
       const response = await fetch("/api/v1/paper-gen", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ classname, subj, topic }),
-      });
+      })
       if (!response.ok) {
-        throw new Error("Failed to generate paper");
+        throw new Error("Failed to generate paper")
       }
-      const data = await response.json();
-      const content = data.content;
+      const data = await response.json()
+      const content = data.content
 
-      // Define the PDF document using react-pdf.
+      // Create the PDF document using react-pdf components with inline styles.
       const MyDocument = () => (
         <Document>
-          <Page style={pdfStyles.page}>
-            <Text style={pdfStyles.header}>Question Paper</Text>
-            <Text style={pdfStyles.text}>Class: {classname}</Text>
-            <Text style={pdfStyles.text}>Subject: {subj}</Text>
-            <Text style={pdfStyles.text}>Topic: {topic}</Text>
-            <Text style={pdfStyles.text}>{content}</Text>
+          <Page style={pageStyle}>
+            <Text style={headerStyle}>Question Paper</Text>
+            <Text style={textStyle}>Class: {classname}</Text>
+            <Text style={textStyle}>Subject: {subj}</Text>
+            <Text style={textStyle}>Topic: {topic}</Text>
+            <Text style={textStyle}>{content}</Text>
           </Page>
         </Document>
-      );
+      )
 
-      // Convert the PDF document to a blob, then trigger a download.
-      const blob = await pdf(<MyDocument />).toBlob();
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `question_paper_${classname}_${subj}_${topic}.pdf`;
-      link.click();
-      URL.revokeObjectURL(url);
+      // Convert the PDF document to a blob.
+      const blob = await pdf(<MyDocument />).toBlob()
+      setPdfBlob(blob)
+      setShowPdfPreview(true) // Ensure preview is visible
+      setIsModalOpen(true)
     } catch (err: any) {
-      setError(err.message || "Something went wrong");
+      setError(err.message || "Something went wrong")
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
+
+  // Download the generated PDF.
+  const handleDownload = () => {
+    if (pdfBlob) {
+      const url = URL.createObjectURL(pdfBlob)
+      const link = document.createElement("a")
+      link.href = url
+      link.download = `question_paper_${classname}_${subj}_${topic}.pdf`
+      link.click()
+      URL.revokeObjectURL(url)
+    }
+  }
 
   return (
-    <div className="min-h-screen text-gray-900 dark:text-white">
-      <Card className="max-w-lg mt-10 mx-auto p-6 space-y-5 bg-white dark:bg-black shadow-lg rounded-lg">
-        <CardHeader className="text-xl font-semibold">Generate Question Paper</CardHeader>
+    <div className="text-gray-900 dark:text-white">
+      <Card className="max-w-lg mx-auto p-6 space-y-5 bg-white dark:bg-black shadow-lg rounded-lg">
+        <CardHeader className="text-xl font-semibold">
+          Generate Question Paper
+        </CardHeader>
         <CardDescription className="text-sm text-gray-500 dark:text-gray-400">
           Enter details below to generate your paper.
         </CardDescription>
         <div className="space-y-5">
           {/* Class Input */}
-          <Card className="space-y-2">
-            <Label htmlFor="classname" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <div className="space-y-2">
+            <Label
+              htmlFor="classname"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Class
             </Label>
             <Input
@@ -85,11 +125,14 @@ export default function PaperGen({ goBack }: DoubtProps) {
               onChange={(e) => setClassname(e.target.value)}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600"
             />
-          </Card>
+          </div>
 
           {/* Subject Input */}
-          <Card className="space-y-2">
-            <Label htmlFor="subj" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <div className="space-y-2">
+            <Label
+              htmlFor="subj"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Subject
             </Label>
             <Input
@@ -100,11 +143,14 @@ export default function PaperGen({ goBack }: DoubtProps) {
               onChange={(e) => setSubj(e.target.value)}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600"
             />
-          </Card>
+          </div>
 
           {/* Topic Input */}
-          <Card className="space-y-2">
-            <Label htmlFor="topic" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <div className="space-y-2">
+            <Label
+              htmlFor="topic"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Topic
             </Label>
             <Input
@@ -115,7 +161,7 @@ export default function PaperGen({ goBack }: DoubtProps) {
               onChange={(e) => setTopic(e.target.value)}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600"
             />
-          </Card>
+          </div>
 
           {error && <div className="text-red-500 text-sm">{error}</div>}
         </div>
@@ -127,56 +173,38 @@ export default function PaperGen({ goBack }: DoubtProps) {
           {loading ? "Generating..." : "Generate Paper"}
         </Button>
       </Card>
-    </div>
-  );
-}
 
-// PDF document styles using react-pdf's StyleSheet.
-const pdfStyles = StyleSheet.create({
-  page: {
-    padding: 40,
-    backgroundColor: "#ffffff",
-    marginTop: 50,
-    marginBottom: 50,
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#000000",
-    textAlign: "center",
-    marginBottom: 30,
-    textTransform: "uppercase", // For a more formal look
-  },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#000000",
-    marginBottom: 10,
-    textDecoration: "underline", // Underline for section headers like Class, Subject, Topic
-  },
-  text: {
-    fontSize: 14,
-    color: "#333",
-    lineHeight: 1.6, // Increased line spacing for better readability
-    marginBottom: 15,
-  },
-  questionText: {
-    fontSize: 14,
-    color: "#333",
-    marginBottom: 10,
-    textIndent: 20, // Indent questions for a more formal look
-  },
-  answerText: {
-    fontSize: 14,
-    color: "#555",
-    marginLeft: 30,
-    marginBottom: 15,
-    marginTop: 5,
-  },
-  footer: {
-    fontSize: 12,
-    color: "#888",
-    textAlign: "center",
-    marginTop: 40,
-  },
-});
+      {/* Modal using your custom Dialog components */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="max-w-3xl w-full max-h-[90vh]">
+          <DialogHeader>
+            <DialogTitle>Preview Question Paper</DialogTitle>
+          </DialogHeader>
+          <div className="flex items-center justify-between mb-4">
+            <Button
+              variant="outline"
+              onClick={() => setShowPdfPreview((prev) => !prev)}
+            >
+              {showPdfPreview ? "Hide PDF Preview" : "Show PDF Preview"}
+            </Button>
+          </div>
+          {showPdfPreview && pdfBlob && (
+            <div className="w-full h-[70vh] overflow-y-auto border rounded-md">
+              <iframe
+                src={URL.createObjectURL(pdfBlob)}
+                className="w-full h-full border-0"
+                title="PDF Preview"
+              />
+            </div>
+          )}
+          <div className="flex justify-end gap-4 mt-4">
+            <Button variant="outline" onClick={() => setIsModalOpen(false)}>
+              Close
+            </Button>
+            <Button onClick={handleDownload}>Download</Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
+  )
+}
