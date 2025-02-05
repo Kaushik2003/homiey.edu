@@ -123,7 +123,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab, setActiveTab })
         )}
       </div>
       <div className="absolute bottom-4 text-neutral-500 dark:text-neutral-400">
-        AI tutor can make mistakes, be careful.
+        AI tutor can make mistakes,be careful.
       </div>
     </div>
   );
