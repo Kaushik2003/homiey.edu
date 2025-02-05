@@ -101,6 +101,12 @@ export default function PaperGen({ goBack }: DoubtProps) {
 
   return (
     <div className="text-gray-900 dark:text-white">
+      <Button
+        onClick={goBack}
+        className="fixed top-4 right-4 mb-4 rounded-3xl text-gray-100 dark:text-black hover:text-gray-500 dark:hover:text-gray-400"
+      >
+        ← Back
+      </Button>
       <Card className="max-w-lg mx-auto p-6 space-y-5 bg-white dark:bg-black shadow-lg rounded-lg">
         <CardHeader className="text-xl font-semibold">
           Generate Question Paper
@@ -123,7 +129,7 @@ export default function PaperGen({ goBack }: DoubtProps) {
               placeholder="Enter class"
               value={classname}
               onChange={(e) => setClassname(e.target.value)}
-              className="w-full mt-1 p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600"
+              className="w-full mt-1 p-2 border border-gray-300 rounded-md dark:bg-black dark:border-gray-300"
             />
           </div>
 
@@ -141,7 +147,7 @@ export default function PaperGen({ goBack }: DoubtProps) {
               placeholder="Enter subject"
               value={subj}
               onChange={(e) => setSubj(e.target.value)}
-              className="w-full mt-1 p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600"
+              className="w-full mt-1 p-2 border border-gray-300 rounded-md dark:bg-black dark:border-gray-300"
             />
           </div>
 
@@ -159,7 +165,7 @@ export default function PaperGen({ goBack }: DoubtProps) {
               placeholder="Enter topic"
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
-              className="w-full mt-1 p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600"
+              className="w-full mt-1 p-2 border border-gray-300 rounded-md dark:bg-black dark:border-gray-300"
             />
           </div>
 
@@ -168,7 +174,7 @@ export default function PaperGen({ goBack }: DoubtProps) {
         <Button
           onClick={generatePaper}
           disabled={loading}
-          className="w-full mt-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 dark:bg-blue-800 dark:hover:bg-blue-900"
+          className="w-full mt-5 py-2 bg-gray-900 text-white dark:text-black rounded-md hover:bg-gray-800 dark:bg-gray-200 dark:hover:bg-gray-300"
         >
           {loading ? "Generating..." : "Generate Paper"}
         </Button>

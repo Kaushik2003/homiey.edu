@@ -6,6 +6,7 @@ import {
   IconQuestionMark,
   IconUserBolt,
   IconAugmentedReality,
+  IconPdf,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
@@ -54,6 +55,12 @@ export function SidebarDemo() {
       icon: <IconAugmentedReality className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
       onClick: () => setActiveTab("generate"),
     },
+    {
+      label: "Pdf review",
+      href: "#",
+      icon: <IconPdf className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
+      onClick: () => setActiveTab("pdf"),
+    }
   ];
 
   return (
