@@ -12,7 +12,7 @@ export default function FloatingNavDemo() {
     },
     {
       name: "Features",
-      link: "/courses",
+      link: "/Features",
       icon: <IconBook className="h-5 w-5 text-neutral-500 dark:text-white" />,
     },
     {
