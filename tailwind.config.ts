@@ -20,7 +20,8 @@ const config: Config = {
   				'var(--var-poppins)'
   			]
   		},
-  		keyframes: {
+  		keyframes: 
+		{
   			meteor: {
   				'0%': {
   					transform: 'rotate(215deg) translateX(0)',
@@ -60,7 +61,15 @@ const config: Config = {
   				'30%, 60%': {
   					'background-position': 'calc(100% + var(--shiny-width)) 0'
   				}
-  			}
+  			},
+			  shimmer: {
+				from: {
+				  backgroundPosition: "0 0",
+				},
+				to: {
+				  backgroundPosition: "-200% 0",
+				},
+			  },
   		},
   		animation: {
   			'meteor-effect': 'meteor 5s linear infinite',

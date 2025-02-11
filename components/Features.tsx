@@ -156,7 +156,8 @@ const SkeletonFive = () => (
           </div> */}
  
           <h1 className="font-bold text-xl text-white mb-12 relative z-50">
-            Meteors because they&apos;re cool
+            {/* Meteors because they&apos;re cool */}
+             Tests have never been easier
           </h1>
           {/* Meaty part - Meteor effect */}
           <Meteors number={20} />
