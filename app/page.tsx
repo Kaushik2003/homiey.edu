@@ -3,6 +3,7 @@ import Hero from "../components/Hero"
 import Features from "../components/Features"
 import FAQ from "../components/FAQ"
 import Footer from "../components/Footer"
+import Contribute from "@/components/Contribute"
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <Hero />
         <Features />
         <FAQ />
+        <Contribute/>
       </main>
       <Footer />
     </div>
