@@ -5,6 +5,7 @@ import { Globe } from "./magicui/globe";
 import { SparklesText } from "./magicui/sparkles-text";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { AnimatedShinyText } from "./magicui/animated-shiny-text";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -21,6 +22,16 @@ export default function Hero() {
         <div>
           <SparklesText text={"Worried about grades??"}></SparklesText>
         </div>
+        <div className="flex justify-center mt-10">
+            <Link href="/dashboard" className="group">
+              <button className="p-[3px] relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+                <div className="px-8 py-2 bg-black dark:bg-white rounded-[6px] relative group-hover:bg-transparent transition duration-200 text-white dark:text-black group-hover:text-black dark:group-hover:text-white flex items-center space-x-2">
+                  <span>Launch AItor</span>
+                </div>
+              </button>
+            </Link>
+          </div>
       </div>
     </div>
   );

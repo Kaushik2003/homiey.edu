@@ -402,95 +402,23 @@ export default function Contribute() {
   ];
 
   return (
-    // <div className="flex flex-row items-center justify-center py-20 h-screen md:h-auto dark:bg-black bg-white relative w-full">
-    //   <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
-    //     <motion.div
-    //       initial={{
-    //         opacity: 0,
-    //         y: 20,
-    //       }}
-    //       animate={{
-    //         opacity: 1,
-    //         y: 0,
-    //       }}
-    //       transition={{
-    //         duration: 1,
-    //       }}
-    //       className="div"
-    //     >
-    //       <h2 className="text-center text-xl md:text-4xl font-bold text-black dark:text-white">
-    //         We sell soap worldwide
-    //       </h2>
-    //       <p className="text-center text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto">
-    //         This globe is interactive and customizable. Have fun with it, and
-    //         don&apos;t forget to share it. :)
-    //       </p>
-    //       <button className="p-[3px] relative">
-    //         <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
-    //         <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
-    //           Lit up borders
-    //         </div>
-    //       </button>
-    //     </motion.div>
-    //     <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
-    //     <div className="absolute w-full -bottom-20 h-72 md:h-full z-10">
-    //       <World data={sampleArcs} globeConfig={globeConfig} />
-    //     </div>
-    //   </div>
-    // </div>
-    
-    
-    
-    // <div className="flex flex-row items-center justify-center py-20 h-screen md:h-auto dark:bg-black bg-black relative w-full">
-    //   <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
-    //     <motion.div
-    //       initial={{ opacity: 0, y: 20 }}
-    //       animate={{ opacity: 1, y: 0 }}
-    //       transition={{ duration: 1 }}
-    //       className="div"
-    //     >
-    //       <h2 className="text-center text-xl md:text-4xl font-bold text-black dark:text-white">
-    //         We sell soap worldwide
-    //       </h2>
-    //       <p className="text-center text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto">
-    //         This globe is interactive and customizable. Have fun with it, and
-    //         don&apos;t forget to share it. :)
-    //       </p>
-    //       {/* Centered Button */}
-    //       <div className="flex justify-center mt-4">
-    //         <Link href="https://github.com/Kaushik2003/google_solution" className="hover:text-white">
-    //             <button className="p-[3px] relative">
-    //             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
-    //             <div className="px-8 py-2 bg-black rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent">
-    //               Contribute here
-    //             </div>
-    //             <GithubIcon />
-    //           </button>
-    //         </Link>
-    //       </div>
-    //     </motion.div>
-    //     <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
-    //     <div className="absolute w-full -bottom-20 h-72 md:h-full z-10">
-    //       <World data={sampleArcs} globeConfig={globeConfig} />
-    //     </div>
-    //   </div>
-    // </div>
 
-    <div className="flex flex-col items-center justify-center min-h-screen py-20 bg-white dark:bg-black relative w-full overflow-hidden pb-10">
-      <div className="max-w-7xl mx-auto w-full relative h-full md:h-[40rem] px-4">
+    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen py-20 bg-white dark:bg-black relative w-full overflow-hidden pb-10">
+      <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center md:items-start h-full md:h-[30rem] px-4">
+        {/* Left Section - Text Content */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="relative z-20"
+          className="w-full md:w-1/2 text-center md:text-left relative z-20 mt-10 md:mt-20"
         >
-          <h2 className="text-center text-xl md:text-4xl font-bold text-black dark:text-white">
+          <h2 className="text-xl md:text-4xl font-bold text-black dark:text-white">
             We appreciate contribution
           </h2>
-          <p className="text-center text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto">
+          <p className="text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto md:mx-0">
             This project is open-sourced. Have fun with it, and don&apos;t forget to share it. :)
           </p>
-          <div className="flex justify-center mt-4">
+          <div className="flex justify-center md:justify-start mt-4">
             <Link href="https://github.com/Kaushik2003/google_solution" className="group">
               <button className="p-[3px] relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
@@ -502,11 +430,17 @@ export default function Contribute() {
             </Link>
           </div>
         </motion.div>
-        <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-30" />
-        <div className="absolute w-full -bottom-20 h-72 md:h-full z-10">
-          <World data={sampleArcs} globeConfig={globeConfig} />
+
+        {/* Right Section - Globe */}
+        <div className="w-full md:w-1/2 flex justify-center items-center relative">
+          <div className="w-full md:w-[30rem] h-[20rem] md:h-[30rem] relative z-10">
+            <World data={sampleArcs} globeConfig={globeConfig} />
+          </div>
         </div>
       </div>
+
+      {/* Gradient Overlay */}
+      <div className="absolute w-full bottom-0 inset-x-0 h-32 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-30 opacity-70" />
     </div>
   );
 }

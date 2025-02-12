@@ -1,4 +1,4 @@
-"use client"
+
 // import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 // const faqs = [
@@ -114,10 +114,10 @@ const content = [
       </div>
     ),
   },
-];
+]; 
 export default function StickyScrollRevealDemo() {
   return (
-    <div className="p-10 mb-8">
+    <div className="p-10 mb-2">
       <h2 className="text-4xl font-bold text-center mb-8">
         Frequently Asked Questions
       </h2>
