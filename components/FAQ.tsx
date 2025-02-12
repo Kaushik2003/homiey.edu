@@ -118,7 +118,7 @@ const content = [
 export default function StickyScrollRevealDemo() {
   return (
     <div id="faq" className="p-10 mb-2 ">
-      <h2 className="text-4xl font-bold text-center mb-8">
+      <h2 className="text-4xl font-bold text-center mb-8 ">
         Frequently Asked Questions
       </h2>
       <StickyScroll content={content} />

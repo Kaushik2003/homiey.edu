@@ -20,8 +20,7 @@ const config: Config = {
   				'var(--var-poppins)'
   			]
   		},
-  		keyframes: 
-		{
+  		keyframes: {
   			meteor: {
   				'0%': {
   					transform: 'rotate(215deg) translateX(0)',
@@ -62,20 +61,41 @@ const config: Config = {
   					'background-position': 'calc(100% + var(--shiny-width)) 0'
   				}
   			},
-			  shimmer: {
-				from: {
-				  backgroundPosition: "0 0",
-				},
-				to: {
-				  backgroundPosition: "-200% 0",
-				},
-			  },
+  			shimmer: {
+  				from: {
+  					backgroundPosition: '0 0'
+  				},
+  				to: {
+  					backgroundPosition: '-200% 0'
+  				}
+  			},
+  			'shimmer-slide': {
+  				to: {
+  					transform: 'translate(calc(100cqw - 100%), 0)'
+  				}
+  			},
+  			'spin-around': {
+  				'0%': {
+  					transform: 'translateZ(0) rotate(0)'
+  				},
+  				'15%, 35%': {
+  					transform: 'translateZ(0) rotate(90deg)'
+  				},
+  				'65%, 85%': {
+  					transform: 'translateZ(0) rotate(270deg)'
+  				},
+  				'100%': {
+  					transform: 'translateZ(0) rotate(360deg)'
+  				}
+  			}
   		},
   		animation: {
   			'meteor-effect': 'meteor 5s linear infinite',
   			gradient: 'gradient 8s linear infinite',
   			ripple: 'ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite',
-  			'shiny-text': 'shiny-text 8s infinite'
+  			'shiny-text': 'shiny-text 8s infinite',
+  			'shimmer-slide': 'shimmer-slide var(--speed) ease-in-out infinite alternate',
+  			'spin-around': 'spin-around calc(var(--speed) * 2) infinite linear'
   		},
   		colors: {
   			background: 'hsl(var(--background))',

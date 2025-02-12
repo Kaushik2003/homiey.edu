@@ -6,6 +6,8 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { GithubIcon } from "lucide-react";
 import { ButtonsCard } from "./ui/tailwindcss-buttons";
+import { AnimatedTooltipPreview } from "./Peepslogo";
+import { ShimmerButton } from "./magicui/shimmer-button";
 
 const World = dynamic(
   () => import("../components/ui/globe").then((m) => m.World),
@@ -403,20 +405,19 @@ export default function Contribute() {
 
   return (
 
-    <div id="contribute" className="flex flex-col md:flex-row items-center justify-center min-h-screen py-20 bg-white dark:bg-black relative w-full overflow-hidden pb-10">
-      <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center md:items-start h-full md:h-[30rem] px-4">
+    <div className="flex flex-col items-center justify-center min-h-screen gap-4 py-16 bg-white dark:bg-black relative w-full overflow-hidden pb-10">
+    <ShimmerButton className="max-w-7xl w-full mx-auto  ">
+      <div className="flex flex-col  md:flex-row items-center md:items-start h-full md:h-[30rem] ">
         {/* Left Section - Text Content */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="w-full md:w-1/2 text-center md:text-left relative z-20 mt-10 md:mt-20"
+          className="w-full md:w-1/2 text-center  md:text-left relative z-20 mt-10 md:mt-20"
         >
-          <h2 className="text-xl md:text-4xl font-bold text-black dark:text-white">
-            We appreciate contribution
-          </h2>
+          <h2 className="text-xl md:text-4xl font-bold text-black dark:text-white">We appreciate contribution</h2>
           <p className="text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto md:mx-0">
-            This project is open-sourced. Have fun with it, and don&apos;t forget to share it. :)
+            This project is open-sourced. Have fun with it, and don&apos;t <br/> forget to share it. :)
           </p>
           <div className="flex justify-center md:justify-start mt-4">
             <Link href="https://github.com/Debanjannnn/google_solution" className="group">
@@ -427,12 +428,6 @@ export default function Contribute() {
                   <GithubIcon className="w-5 h-5" />
                 </div>
               </button>
-              {/* <button className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-                  Border Magic
-                </span>
-              </button> */}
             </Link>
           </div>
         </motion.div>
@@ -444,9 +439,10 @@ export default function Contribute() {
           </div>
         </div>
       </div>
+    </ShimmerButton>
 
-      {/* Gradient Overlay */}
-      <div className="absolute w-full bottom-0 inset-x-0 h-32 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-30 opacity-70" />
-    </div>
+    {/* Gradient Overlay */}
+    <div className="absolute w-full bottom-0 inset-x-0 h-32 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-30 opacity-70" />
+  </div>
   );
 }
