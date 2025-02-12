@@ -3,7 +3,7 @@ import { GithubIcon } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer id="contact" >
+    <footer id="footer" >
       <div className=" py-4 pt-5 bg-black z-0 ">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm">
           <span>&copy; 2025 googlesolution.ai</span>
