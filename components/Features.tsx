@@ -12,7 +12,8 @@ import Image from "next/image";
 
 export default function BentoGridCustomDemo() {
   return (
-    <BentoGrid className="max-w-7xl pb-20 mx-auto md:auto-rows-[22rem] grid gap-5">
+    <div id="features">
+      <BentoGrid className="max-w-7xl pb-20 mx-auto md:auto-rows-[22rem] grid gap-5">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}
@@ -24,6 +25,7 @@ export default function BentoGridCustomDemo() {
         />
       ))}
     </BentoGrid>
+    </div>
   );
 }
 

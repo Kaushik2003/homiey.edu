@@ -16,6 +16,7 @@ export const FloatingNav = ({
   navItems: {
     name: string;
     link: string;
+    id: string;
     icon?: JSX.Element;
   }[];
   className?: string;
@@ -46,16 +47,42 @@ export const FloatingNav = ({
           className
         )}
       >
+        {/* {navItems.map((navItem: any, idx: number) => (
+          <Link
+            key={`link=${idx}`}
+            href={navItem.link}
+            onClick={()=>{
+              const idd=navItem.id;
+              const element=document.getElementById(idd);
+              element.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="relative text-neutral-50 items-center flex space-x-1 hover:text-neutral-300"
+          >
+            <span className="block sm:hidden">{navItem.icon}</span>
+            <span className="hidden sm:block text-sm">{navItem.name}</span>
+          </Link>
+        ))} */}
         {navItems.map((navItem: any, idx: number) => (
           <Link
             key={`link=${idx}`}
             href={navItem.link}
+            onClick={(e) => {
+              e.preventDefault(); // Prevent default link behavior
+              const idd = navItem.id;
+              const element = document.getElementById(idd);
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth", block: "start" });
+              } else {
+                console.warn(`Element with id ${idd} not found.`);
+              }
+            }}
             className="relative text-neutral-50 items-center flex space-x-1 hover:text-neutral-300"
           >
             <span className="block sm:hidden">{navItem.icon}</span>
             <span className="hidden sm:block text-sm">{navItem.name}</span>
           </Link>
         ))}
+
         <button className="border text-sm font-medium relative border-white/[0.2] text-white px-4 py-2 rounded-full">
           <Link href="/dashboard">Login</Link>
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />

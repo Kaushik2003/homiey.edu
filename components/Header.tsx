@@ -7,22 +7,32 @@ export default function FloatingNavDemo() {
   const navItems = [
     {
       name: "Home",
-      link: "/",
+      link: "",
+      id: "hero",
       icon: <IconHome className="h-5 w-5 text-neutral-500 dark:text-white" />,
     },
     {
       name: "Features",
-      link: "/Features",
+      link: "",
+      id: "features",
       icon: <IconBook className="h-5 w-5 text-neutral-500 dark:text-white" />,
     },
     {
       name: "FAQ",
-      link: "/tutors",
+      link: "",
+      id: "faq",
       icon: <IconUser className="h-5 w-5 text-neutral-500 dark:text-white" />,
     },
     {
+      name: "Contribute",
+      link: "",
+      id: "contribute",
+      icon: <IconMessageCircle className="h-5 w-5 text-neutral-500 dark:text-white" />,
+    },
+    {
       name: "Contact",
-      link: "/contact",
+      link: "",
+      id: "footer",
       icon: <IconMessageCircle className="h-5 w-5 text-neutral-500 dark:text-white" />,
     },
   ];

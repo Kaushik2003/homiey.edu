@@ -403,7 +403,7 @@ export default function Contribute() {
 
   return (
 
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen py-20 bg-white dark:bg-black relative w-full overflow-hidden pb-10">
+    <div id="contribute" className="flex flex-col md:flex-row items-center justify-center min-h-screen py-20 bg-white dark:bg-black relative w-full overflow-hidden pb-10">
       <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center md:items-start h-full md:h-[30rem] px-4">
         {/* Left Section - Text Content */}
         <motion.div
