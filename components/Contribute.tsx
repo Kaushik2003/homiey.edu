@@ -419,14 +419,20 @@ export default function Contribute() {
             This project is open-sourced. Have fun with it, and don&apos;t forget to share it. :)
           </p>
           <div className="flex justify-center md:justify-start mt-4">
-            <Link href="https://github.com/Kaushik2003/google_solution" className="group">
+            <Link href="https://github.com/Debanjannnn/google_solution" className="group">
               <button className="p-[3px] relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
-                <div className="px-8 py-2 bg-black dark:bg-white rounded-[6px] relative group-hover:bg-transparent transition duration-200 text-white dark:text-black group-hover:text-black dark:group-hover:text-white flex items-center space-x-2">
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" />
+                <div className="px-8 py-2 bg-black dark:bg-white rounded-full relative group-hover:bg-transparent transition duration-200 text-white dark:text-black group-hover:text-black dark:group-hover:text-white flex items-center space-x-2">
                   <span>Contribute here</span>
                   <GithubIcon className="w-5 h-5" />
                 </div>
               </button>
+              {/* <button className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                  Border Magic
+                </span>
+              </button> */}
             </Link>
           </div>
         </motion.div>

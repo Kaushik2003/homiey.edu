@@ -74,7 +74,7 @@ const SkeletonOne = () => {
           className="rounded-full h-10 w-10"
         />
         <p className="text-xs text-neutral-500">
-        How do plants produce their own food through photosynthesis?
+        I need sample papers and notes, to excel my exam?
         </p>
       </motion.div>
       <motion.div
@@ -82,7 +82,7 @@ const SkeletonOne = () => {
         className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center justify-end space-x-2 w-3/4 ml-auto bg-white dark:bg-black"
       >
         
-        <p className="text-xs text-neutral-500">Using sunlight, water and CO2</p>
+        <p className="text-xs text-neutral-500">Nw,we got your back!</p>
        
         <Image
           src="https://i.pinimg.com/736x/f1/7d/db/f17ddb244e3f2f6a720e61cd3f8161fb.jpg"
