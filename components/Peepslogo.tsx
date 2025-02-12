@@ -1,42 +1,24 @@
-"use client";
-import React from "react";
-import { AnimatedTooltip } from "./ui/animated-tooltip";
-const people = [
+import { AvatarCircles } from "@/components/magicui/avatar-circles";
+
+const avatars = [
   {
-    id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-    image:
-      "https://i.pinimg.com/736x/d4/76/8c/d4768c0e7d8762294c1f169a6a1d3c27.jpg",
+    imageUrl: "https://avatars.githubusercontent.com/u/16860528",
+    profileUrl: "https://github.com/dillionverma",
   },
   {
-    id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-    image:
-      "https://i.pinimg.com/736x/d4/76/8c/d4768c0e7d8762294c1f169a6a1d3c27.jpg",
+    imageUrl: "https://avatars.githubusercontent.com/u/20110627",
+    profileUrl: "https://github.com/tomonarifeehan",
   },
   {
-    id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-    image:
-      "https://i.pinimg.com/736x/d4/76/8c/d4768c0e7d8762294c1f169a6a1d3c27.jpg",
+    imageUrl: "https://avatars.githubusercontent.com/u/106103625",
+    profileUrl: "https://github.com/BankkRoll",
   },
   {
-    id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-    image:
-      "https://i.pinimg.com/736x/d4/76/8c/d4768c0e7d8762294c1f169a6a1d3c27.jpg",
-  },
-  
+    imageUrl: "https://avatars.githubusercontent.com/u/59228569",
+    profileUrl: "https://github.com/safethecode",
+  }
 ];
 
-export function AnimatedTooltipPreview() {
-  return (
-    <div className="flex flex-row items-center justify-center mb-10 w-full mt-4">
-      <AnimatedTooltip items={people}  />
-    </div>
-  );
+export function AvatarCirclesDemo() {
+  return <AvatarCircles numPeople={99} avatarUrls={avatars} />;
 }

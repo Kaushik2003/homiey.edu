@@ -6,8 +6,8 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { GithubIcon } from "lucide-react";
 import { ButtonsCard } from "./ui/tailwindcss-buttons";
-import { AnimatedTooltipPreview } from "./Peepslogo";
 import { ShimmerButton } from "./magicui/shimmer-button";
+import { AvatarCirclesDemo } from "./Peepslogo";
 
 const World = dynamic(
   () => import("../components/ui/globe").then((m) => m.World),
@@ -428,7 +428,11 @@ export default function Contribute() {
                   <GithubIcon className="w-5 h-5" />
                 </div>
               </button>
+              <div className="pt-3">
+              <AvatarCirclesDemo />
+              </div>
             </Link>
+            
           </div>
         </motion.div>
 
