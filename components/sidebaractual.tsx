@@ -12,7 +12,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Dashboard } from "./Dashboard";
-import { SignInButton, SignUpButton, useAuth, UserButton } from "@clerk/clerk-react";
+// import { SignInButton, SignUpButton, useAuth, UserButton } from "@clerk/clerk-react";
 import { LogOutIcon, LogInIcon, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { dark } from "@clerk/themes";
@@ -20,7 +20,7 @@ import { dark } from "@clerk/themes";
 export function SidebarDemo() {
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<"ask" | "quiz" | "generate" | "pdf" | null>(null);
-  const { isSignedIn } = useAuth();
+  // const { isSignedIn } = useAuth();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -96,7 +96,7 @@ export function SidebarDemo() {
                 )}
               </button>
 
-              {isSignedIn ? (
+              {/* {isSignedIn ? (
                 <SidebarLink
                   link={{
                     label: "",
@@ -156,7 +156,7 @@ export function SidebarDemo() {
                     }}
                   />
                 </>
-              )}
+              )} */}
             </div>
           </div>
         </SidebarBody>
