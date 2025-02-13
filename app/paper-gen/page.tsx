@@ -30,11 +30,12 @@ export default function PaperGen({ goBack }: DoubtProps) {
 
   const headerStyle = {
     fontSize: 24,
-    fontWeight: "bold" as "bold",
-    textAlign: "center" as "center",
+    fontWeight: "bold",
+    textAlign: "center",
     marginBottom: 30,
-    textTransform: "uppercase" as "uppercase",
-  }
+    textTransform: "uppercase",
+  } as const
+  
 
   const textStyle = {
     fontSize: 14,

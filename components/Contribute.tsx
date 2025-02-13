@@ -429,7 +429,7 @@ export default function Contribute() {
                 </div>
               </button>
               <div className="pt-3">
-              <AvatarCirclesDemo />
+              {/* <AvatarCirclesDemo /> */}
               </div>
             </Link>
             

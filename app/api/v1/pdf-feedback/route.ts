@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
       "Provide a summary based on the context and categorize them into a brief summary, strengths, improvements, next steps, and suggestions, keep it  short and precise.",
     ]);
 
-    let summaryText = result.response.text();
+    const summaryText = result.response.text();
     console.log("Raw Summary Text:", summaryText);
 
     // Define our categories with empty content
