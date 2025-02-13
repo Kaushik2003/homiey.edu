@@ -2,20 +2,20 @@ import { AvatarCircles } from "@/components/magicui/avatar-circles";
 
 const avatars = [
   {
-    imageUrl: "https://avatars.githubusercontent.com/u/16860528",
-    profileUrl: "https://github.com/dillionverma",
+    imageUrl: "https://avatars.githubusercontent.com/u/134854145?v=4",
+    profileUrl: "https://github.com/Debanjannnn",
   },
   {
-    imageUrl: "https://avatars.githubusercontent.com/u/20110627",
-    profileUrl: "https://github.com/tomonarifeehan",
+    imageUrl: "https://avatars.githubusercontent.com/u/135033576?v=4",
+    profileUrl: "https://github.com/RAVEYUS",
   },
   {
-    imageUrl: "https://avatars.githubusercontent.com/u/106103625",
-    profileUrl: "https://github.com/BankkRoll",
+    imageUrl: "https://avatars.githubusercontent.com/u/70917815?v=4",
+    profileUrl: "https://github.com/Kaushik2003",
   },
   {
-    imageUrl: "https://avatars.githubusercontent.com/u/59228569",
-    profileUrl: "https://github.com/safethecode",
+    imageUrl: "https://avatars.githubusercontent.com/u/108396191?v=4",
+    profileUrl: "https://github.com/manovHacksaw/",
   }
 ];
 
