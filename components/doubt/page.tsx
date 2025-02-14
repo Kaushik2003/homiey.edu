@@ -218,16 +218,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Card, CardContent } from "@/components/ui/card"
-import { useRouter } from 'next/navigation'
 // import { Inter} from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
 interface DoubtProps {
-  goBack: () => void;
+  goBack?: () => void;
 }
 
-export default function LearningInterfaceComponent() {
-  const router = useRouter()
+export default function LearningInterfaceComponent({ goBack = () => {} }: DoubtProps) {
   const [mounted, setMounted] = useState(false)
   const [classNumber, setClassNumber] = useState('')
   const [subject, setSubject] = useState('')
@@ -292,10 +290,10 @@ export default function LearningInterfaceComponent() {
   if (!mounted) return null
 
   return (
-    <div className={`flex text-foreground`}>
+    <div className="text-gray-900 dark:text-white">
       <Button
-        onClick={() => router.back()}
-        className="fixed top-4 right-4 mb-4 rounded-3xl text-gray-100 hover:text-gray-300 dark:text-black"
+        onClick={goBack}
+        className="fixed top-4 right-4 mb-4 rounded-3xl text-gray-100 dark:text-black hover:text-gray-500 dark:hover:text-gray-400"
       >
         ← Back
       </Button>

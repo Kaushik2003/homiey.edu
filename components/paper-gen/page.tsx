@@ -9,10 +9,10 @@ import { Card, CardDescription, CardHeader } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 interface DoubtProps {
-  goBack: () => void
+  goBack?: () => void
 }
 
-export default function PaperGen({ goBack }: DoubtProps) {
+export default function PaperGen({ goBack = () => {} }: DoubtProps) {
   const [classname, setClassname] = useState("")
   const [subj, setSubj] = useState("")
   const [topic, setTopic] = useState("")
