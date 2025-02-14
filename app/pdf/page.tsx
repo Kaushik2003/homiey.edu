@@ -3,12 +3,14 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { StatsModal } from "@/components/statsPDF"; // Importing StatsModal component
+import { useRouter } from "next/navigation"
 
 interface DoubtProps {
   goBack?: () => void;
 }
 
-export default function PdfReview({ goBack = () => {} }: DoubtProps) {
+export default function PdfReview() {
+  const router = useRouter();
   const [driveLink, setDriveLink] = useState("");
   const [numericValues, setNumericValues] = useState<string[] | null>(null);
   const [reviewData, setReviewData] = useState<any | null>(null); // New state for the review data
@@ -56,7 +58,7 @@ export default function PdfReview({ goBack = () => {} }: DoubtProps) {
   return (
     <div className="max-w-lg mx-auto p-6 border dark:border-gray-300 bg-white dark:bg-card rounded-xl border-gray-700 text-gray-900 dark:text-gray-100">
       <Button
-        onClick={goBack}
+        onClick={()=>router.back()}
         className="fixed top-4 right-4 mb-4 rounded-3xl text-gray-100 dark:text-black hover:text-gray-500 dark:hover:text-gray-400"
       >
         ← Back

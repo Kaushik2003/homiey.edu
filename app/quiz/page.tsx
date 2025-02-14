@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { useRouter } from "next/navigation"
 import {
   Card,
   CardContent,
@@ -34,6 +35,7 @@ type QuizProps = {
 }
 
 export default function QuizApp({ goBack = () => {} }: QuizProps) {
+  const router = useRouter()
   const [classname, setClassname] = useState("")
   const [subj, setSubj] = useState("")
   const [topic, setTopic] = useState("")
@@ -134,7 +136,7 @@ export default function QuizApp({ goBack = () => {} }: QuizProps) {
     return (
       <div className="container mx-auto max-w-md mt-10 p-4">
         <Button
-          onClick={goBack}
+          onClick={() => router.back()}
           className="fixed top-4 right-4 mb-4 rounded-3xl text-gray-100 hover:text-gray-300 dark:text-black"
         >
           ← Back

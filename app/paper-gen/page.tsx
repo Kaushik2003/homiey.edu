@@ -7,12 +7,14 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardDescription, CardHeader } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { useRouter } from "next/navigation"
 
 interface DoubtProps {
   goBack?: () => void
 }
 
-export default function PaperGen({ goBack = () => {} }: DoubtProps) {
+export default function PaperGen() {
+  const router = useRouter();
   const [classname, setClassname] = useState("")
   const [subj, setSubj] = useState("")
   const [topic, setTopic] = useState("")
@@ -103,7 +105,7 @@ export default function PaperGen({ goBack = () => {} }: DoubtProps) {
   return (
     <div className="text-gray-900 dark:text-white">
       <Button
-        onClick={goBack}
+        onClick={()=>router.back()}
         className="fixed top-4 right-4 mb-4 rounded-3xl text-gray-100 dark:text-black hover:text-gray-500 dark:hover:text-gray-400"
       >
         ← Back

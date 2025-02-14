@@ -218,6 +218,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Card, CardContent } from "@/components/ui/card"
+import { useRouter } from "next/navigation"
 // import { Inter} from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -225,7 +226,8 @@ interface DoubtProps {
   goBack?: () => void;
 }
 
-export default function LearningInterfaceComponent({ goBack = () => {} }: DoubtProps) {
+export default function LearningInterfaceComponent() {
+  const router = useRouter()
   const [mounted, setMounted] = useState(false)
   const [classNumber, setClassNumber] = useState('')
   const [subject, setSubject] = useState('')
@@ -292,7 +294,7 @@ export default function LearningInterfaceComponent({ goBack = () => {} }: DoubtP
   return (
     <div className="text-gray-900 dark:text-white">
       <Button
-        onClick={goBack}
+        onClick={() => router.back()}
         className="fixed top-4 right-4 mb-4 rounded-3xl text-gray-100 dark:text-black hover:text-gray-500 dark:hover:text-gray-400"
       >
         ← Back
