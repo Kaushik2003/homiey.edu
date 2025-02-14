@@ -405,7 +405,7 @@ export default function Contribute() {
 
   return (
 
-    <div className="flex flex-col items-center justify-center min-h-screen gap-4 py-16 bg-white dark:bg-black relative w-full overflow-hidden pb-10">
+    <div id="contribute" className="flex flex-col items-center justify-center min-h-screen gap-4 py-16 bg-white dark:bg-black relative w-full overflow-hidden pb-10">
     <ShimmerButton className="max-w-7xl w-full mx-auto  ">
       <div className="flex flex-col  md:flex-row items-center md:items-start h-full md:h-[30rem] ">
         {/* Left Section - Text Content */}
