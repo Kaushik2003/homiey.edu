@@ -2,11 +2,11 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useUser } from "@clerk/clerk-react";
-import Doubt from "@/components/doubt/page";
-import PaperGen from "@/components/paper-gen/page";
-import Quiz from "@/components/quiz/page";
+import Doubt from "@/app/doubt/page";
+import PaperGen from "@/app/paper-gen/page";
+import Quiz from "@/app/quiz/page";
 import BlurText from "./ui/BlurText";
-import PdfReview from "@/components/pdf/page";
+import PdfReview from "@/app/pdf/page";
 
 interface DashboardProps {
   activeTab: "ask" | "quiz" | "generate" | "pdf" | null;

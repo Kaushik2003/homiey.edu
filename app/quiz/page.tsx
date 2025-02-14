@@ -30,10 +30,10 @@ interface QuizQuestion {
 }
 
 type QuizProps = {
-  goBack: () => void
+  goBack?: () => void
 }
 
-export default function QuizApp({ goBack }: QuizProps) {
+export default function QuizApp({ goBack = () => {} }: QuizProps) {
   const [classname, setClassname] = useState("")
   const [subj, setSubj] = useState("")
   const [topic, setTopic] = useState("")

@@ -5,10 +5,10 @@ import { useState } from "react";
 import { StatsModal } from "@/components/statsPDF"; // Importing StatsModal component
 
 interface DoubtProps {
-  goBack: () => void;
+  goBack?: () => void;
 }
 
-export default function PdfReview({ goBack }: DoubtProps) {
+export default function PdfReview({ goBack = () => {} }: DoubtProps) {
   const [driveLink, setDriveLink] = useState("");
   const [numericValues, setNumericValues] = useState<string[] | null>(null);
   const [reviewData, setReviewData] = useState<any | null>(null); // New state for the review data
