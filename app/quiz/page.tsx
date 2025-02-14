@@ -34,7 +34,7 @@ type QuizProps = {
   goBack?: () => void
 }
 
-export default function QuizApp({ goBack = () => {} }: QuizProps) {
+export default function QuizApp() {
   const router = useRouter()
   const [classname, setClassname] = useState("")
   const [subj, setSubj] = useState("")
