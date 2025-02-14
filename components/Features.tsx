@@ -105,8 +105,8 @@ const SkeletonThree = () => (
   <Image
           src="https://i.pinimg.com/736x/21/77/47/217747ba77843033acffdc614475be56.jpg"
           alt="avatar"
-          height="2000"
-          width="2000"
+          height="736"
+          width="507"
           className="max-h-44 w-full"
         />
 
