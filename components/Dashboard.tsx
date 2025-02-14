@@ -113,10 +113,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab, setActiveTab })
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                {activeTab === "ask" && <Doubt goBack={goBack} />}
-                {activeTab === "quiz" && <Quiz goBack={goBack} />}
-                {activeTab === "generate" && <PaperGen goBack={goBack} />}
-                {activeTab === "pdf" && <PdfReview goBack={goBack}/>}
+                {activeTab === "ask" && <Doubt/>}
+                {activeTab === "quiz" && <Quiz />}
+                {activeTab === "generate" && <PaperGen/>}
+                {activeTab === "pdf" && <PdfReview/>}
               </motion.div>
             )}
           </AnimatePresence>
