@@ -1,4 +1,17 @@
+# Google Solution Project
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Project Overview
+
+This project aims to provide a solution for integrating Google services with a Next.js application. It includes features such as authentication, data fetching, and more.
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Node.js installed on your machine
+- npm, yarn, pnpm, or bun package manager installed
 
 ## Getting Started
 
@@ -19,6 +32,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Usage
+
+To use this project, follow these steps:
+
+1. Clone the repository
+2. Install dependencies using your preferred package manager
+3. Run the development server
+4. Open the application in your browser
 
 ## Learn More
 
