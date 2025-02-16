@@ -45,7 +45,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab, setActiveTab })
             >
               {!activeTab && !user && (
                 <BlurText
-                  text="Welcome to Aitor!"
+                  text="Welcome to Homiey!"
                   delay={20}
                   animateBy="letters"
                   direction="top"
@@ -54,7 +54,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab, setActiveTab })
               )}
               {!activeTab && user && (
                 <BlurText
-                  text={`Welcome to Aitor, ${user?.firstName || " "}!`}
+                  text={`Welcome to Homiey, ${user?.firstName || " "}!`}
                   delay={20}
                   animateBy="letters"
                   direction="top"
