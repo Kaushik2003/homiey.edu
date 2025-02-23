@@ -85,7 +85,7 @@ export function SidebarDemo() {
           <div>
             <div className="mt-8 flex flex-col gap-4">
               {/* Dark Mode Toggle Button */}
-              <button
+              {/* <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="flex items-center justify-center p-2 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
               >
@@ -94,7 +94,7 @@ export function SidebarDemo() {
                 ) : (
                   <Moon className="h-5 w-5 text-neutral-700 dark:text-neutral-200" />
                 )}
-              </button>
+              </button> */}
 
               {/* {isSignedIn ? (
                 <SidebarLink
