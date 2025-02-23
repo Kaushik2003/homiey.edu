@@ -18,6 +18,7 @@ export default function PaperGen() {
   const [classname, setClassname] = useState("")
   const [subj, setSubj] = useState("")
   const [topic, setTopic] = useState("")
+  const [marks, setMarks] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [pdfBlob, setPdfBlob] = useState<Blob | null>(null)
@@ -57,7 +58,7 @@ export default function PaperGen() {
       const response = await fetch("/api/v1/paper-gen", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ classname, subj, topic }),
+        body: JSON.stringify({ classname, subj, topic,marks }),
       })
       if (!response.ok) {
         throw new Error("Failed to generate paper")
@@ -168,6 +169,22 @@ export default function PaperGen() {
               placeholder="Enter topic"
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
+              className="w-full mt-1 p-2 border border-gray-300 rounded-md dark:bg-black dark:border-gray-300"
+            />
+          </div>
+          <div className="space-y-2">
+            <Label
+              htmlFor="marks"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
+              Marks
+            </Label>
+            <Input
+              id="Marks"
+              type="text"
+              placeholder="Enter total marks"
+              value={marks}
+              onChange={(e) => setMarks(e.target.value)}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md dark:bg-black dark:border-gray-300"
             />
           </div>
