@@ -8,8 +8,8 @@ import { ThemeProvider } from 'next-themes'
 const poppins = Poppins({ weight: ["400"], subsets: ['latin'] , variable: '--font-poppins'})
 
 export const metadata: Metadata = {
-  title: 'AI Tutor',
-  description: 'Your personal AI tutor powered by Gemini',
+  title: 'Homiey',
+  description: 'AI-powered exam prep & assessments.',
 }
 
 export default function RootLayout({
