@@ -7,11 +7,16 @@ const model = genAI.getGenerativeModel({ model: "gemini-pro" })
 export async function POST(request: Request) {
   const { message, classname, subj, topic, doubt } = await request.json()
 
-  const prompt = `the user's message is "${message}".Further explain the user on the said ${doubt}.As a knowledgeable tutor for class ${classname}, subject ${subj}, and topic '${topic}', please address the following doubt:
+//   const prompt = `the user's message is "${message}".Further explain the user on the said ${doubt}.As a knowledgeable tutor for class ${classname}, subject ${subj}, and topic '${topic}', please address the following doubt:
 
-${doubt}
+// ${doubt}
 
-Please provide a clear and concise explanation that is appropriate for a student in class ${classname}.`
+// Please provide a clear and concise explanation that is appropriate for a student in class ${classname}.`
+const prompt = `The user has asked: "${message}".  
+
+As a knowledgeable tutor specializing in class ${classname}, subject ${subj}, and topic '${topic}', please provide a clear and concise explanation that is appropriate for a student at this level.  
+
+Use simple language, relevant examples, and step-by-step explanations to enhance understanding.`
 
   try {
     const result = await model.generateContent(prompt)

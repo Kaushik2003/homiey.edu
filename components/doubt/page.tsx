@@ -244,7 +244,8 @@ export default function LearningInterfaceComponent() {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const welcomeMessage = `Class: ${classNumber}\nSubject: ${subject}\nTopic: ${customTopic}\nDoubt: ${doubt}`
+    // const welcomeMessage = `Class: ${classNumber}\nSubject: ${subject}\nTopic: ${customTopic}\nDoubt: ${doubt}`
+    const welcomeMessage = `Class: ${classNumber}\nSubject: ${subject}\nTopic: ${customTopic}`
     setMessages([{ content: welcomeMessage, isUser: false }])
     setShowChat(true)
   }
@@ -354,13 +355,13 @@ export default function LearningInterfaceComponent() {
                       onChange={(e) => setCustomTopic(e.target.value)}
                       required
                     />
-                    <Input
+                    {/* <Input
                       type="text"
                       placeholder="Doubt"
                       value={doubt}
                       onChange={(e) => setDoubt(e.target.value)}
                       required
-                    />
+                    /> */}
                     <Button type="submit">
                       Start Learning
                       <motion.div
