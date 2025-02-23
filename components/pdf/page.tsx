@@ -69,7 +69,7 @@ export default function PdfReview() {
           type="text"
           value={driveLink}
           onChange={(e) => setDriveLink(e.target.value)}
-          placeholder="Enter Google Drive PDF Link"
+          placeholder="Enter Google Drive PDF Link(public)"
           className="w-full p-2 border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-neutral-800 text-gray-900 dark:text-gray-100 rounded-md focus:ring-2 focus:ring-blue-500"
           required
         />

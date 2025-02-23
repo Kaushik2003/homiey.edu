@@ -181,7 +181,7 @@ export default function PaperGen() {
             </Label>
             <Input
               id="Marks"
-              type="text"
+              type="number"
               placeholder="Enter total marks"
               value={marks}
               onChange={(e) => setMarks(e.target.value)}
