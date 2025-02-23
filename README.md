@@ -1,6 +1,6 @@
 # Homiey
 
-![Homiey Banner](https://your-image-url.com)
+<!-- ![Homiey Banner](https://your-image-url.com) -->
 
 ## 🚀 Overview
 Homiey is an AI-powered educational assistant designed to help students with exam preparation, doubt resolution, and study materials. It provides features such as AI-generated quizzes, custom question papers, and online assessment tools.
