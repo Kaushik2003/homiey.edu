@@ -2,7 +2,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
-import { abi } from '@/abi'; // Using the ABI you provided
+import { abi } from '@/lib/abi'; // Using the ABI you provided
 
 function App() {
   // State variables

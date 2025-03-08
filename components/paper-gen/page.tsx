@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { pdf, Document, Page, Text } from "@react-pdf/renderer"
+import { pdf, Document, Page, Text } from "@react-pdf/renderer" 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
