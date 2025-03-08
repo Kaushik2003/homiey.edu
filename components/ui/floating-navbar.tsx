@@ -3,6 +3,10 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent, animate } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import LoginButton from '../OCIDLoginButton';
+import { useOCAuth } from '@opencampus/ocid-connect-js';
+import NavLoginButton from "./NavLoginButton";
+
 
 export const FloatingNav = ({
   navItems,
@@ -33,16 +37,31 @@ export const FloatingNav = ({
     }
   });
 
-  // useEffect(() => {
-  //   return scrollYProgress.onChange((current) => {
-  //     const direction = current - (scrollYProgress.getPrevious() || 0);
-  //     setTimeout(() => {
-  //       setVisible(scrollYProgress.get() < 0.05 || direction < 0);
-  //     }, 100);
-  //   });
-  // }, [scrollYProgress]);
+ 
 
-  
+  const { authState, ocAuth } = useOCAuth() || {}; // Ensure authState is always defined
+  const [authData, setAuthData] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (authState?.isAuthenticated) {
+      setAuthData(JSON.stringify(ocAuth?.getAuthState(), null, 2));
+    }
+  }, [authState?.isAuthenticated, ocAuth]);
+
+  if (!authState) {
+    return <div className="text-gray-500">Initializing authentication...</div>;
+  }
+
+  if (authState.error) {
+    return <div className="text-red-500">Error: {authState.error.message}</div>;
+  }
+
+  if (authState.isLoading) {
+    return <div className="text-gray-500">Loading...</div>;
+  }
+
+
+  console.log("AUTH STATE IN REDIRECT:", authState?.OCId)
 
   return (
     <AnimatePresence mode="wait">
@@ -81,10 +100,12 @@ export const FloatingNav = ({
         <button className="relative inline-flex h-10 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
           <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
           <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-xs font-medium text-white backdrop-blur-3xl relative">
-            <Link href="/dashboard">Launch</Link>
+            {/* <Link href="/dashboard">Launch</Link> */}
+            <NavLoginButton/>
             <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
           </span>
         </button>
+       
       </motion.div>
     </AnimatePresence>
   );
