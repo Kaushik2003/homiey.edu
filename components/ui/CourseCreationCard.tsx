@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const CourseCreationCard = () => {
@@ -13,15 +14,15 @@ const CourseCreationCard = () => {
       <p className="text-gray-400 mb-6 group-hover:text-gray-300 transition-colors">
         Create, manage, and publish your courses with our powerful tools.
       </p>
-      <a
-        href="#"
+      <Link
+        href="/course-creator"
         className="inline-flex items-center px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all duration-200 group-hover:shadow-lg"
       >
         <span>Go to Creator Portal</span>
         <span className="material-symbols-outlined ml-2 transform group-hover:translate-x-1 transition-transform">
           
         </span>
-      </a>
+      </Link>
     </div>
   );
 };
