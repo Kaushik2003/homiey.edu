@@ -7,10 +7,14 @@ import PaperGen from "@/components/paper-gen/page";
 import Quiz from "@/components/quiz/page";
 import BlurText from "./ui/BlurText";
 import PdfReview from "@/components/pdf/page";
+// import CourseCreator from "./course-creator";
+import { CourseMarketPlace } from "./Course/CourseMarketPlace";
 
 interface DashboardProps {
-  activeTab: "ask" | "quiz" | "generate" | "pdf" | null;
-  setActiveTab: (tab: "ask" | "quiz" | "generate" | "pdf" | null) => void;
+  // activeTab: "ask" | "quiz" | "generate" | "pdf" | null;
+  // setActiveTab: (tab: "ask" | "quiz" | "generate" | "pdf" | null) => void;
+  activeTab: "ask" | "quiz" | "generate" | "pdf" | "course"| null;
+  setActiveTab: (tab: "ask" | "quiz" | "generate" | "pdf" | "course" |null) => void;
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({ activeTab, setActiveTab }) => {
@@ -92,6 +96,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab, setActiveTab })
                     description: "Get Personalized Reviews on your PDFs.",
                     tab: "pdf",
                   },
+                  {
+                    title: "Course Marketplace",
+                    description: "Find Courses and Tutors.",
+                    tab: "course",
+                  },
                 ].map(({ title, description, tab }) => (
                   <motion.div
                     key={tab}
@@ -117,6 +126,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ activeTab, setActiveTab })
                 {activeTab === "quiz" && <Quiz />}
                 {activeTab === "generate" && <PaperGen/>}
                 {activeTab === "pdf" && <PdfReview/>}
+                {activeTab === "course" && <CourseMarketPlace/>}
               </motion.div>
             )}
           </AnimatePresence>

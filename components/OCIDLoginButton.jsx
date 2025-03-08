@@ -33,7 +33,7 @@ export default function LoginButton() {
 
 
   return <div>
-    <button onClick={handleLogin}>Login</button>;
+    <button onClick={handleLogin}>Login</button>
     {/* <button onClick={handleLogout}>Logut</button>; */}
   </div>
 }
