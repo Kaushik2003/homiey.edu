@@ -8,7 +8,6 @@ import { Edit, Trash2, Youtube, FileText, Link2, Save, X } from "lucide-react";
 import type { Module } from "@/components/course-creator";
 import YouTubeEmbed from "./YoutubeRender";
 import PdfRender from "./PdfRender";
-import { PDFViewer } from "@react-pdf/renderer";
 
 interface ModuleBlockProps {
   module: Module;
@@ -43,6 +42,7 @@ export default function ModuleBlock({
       case "pdf":
         return (
           <div>
+            {/* Problem of pdf viewing */}
             <PdfRender url={module.data?.url} />
 
           </div>
