@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Edit, Trash2, Youtube, FileText, Link2, Save, X } from "lucide-react"
 import type { Module } from "@/components/course-creator"
+import YouTubeEmbed from "./YoutubeRender"
 
 interface ModuleBlockProps {
   module: Module
@@ -22,18 +23,18 @@ export default function ModuleBlock({ module, onUpdate, onDelete }: ModuleBlockP
     onUpdate({ title, content })
     setIsEditing(false)
   }
+console.log('module : ', module);
+console.log('module data  : ', module.data);
+console.log('module data url : ', module.data?.url);
 
   const renderModuleContent = () => {
     switch (module.type) {
       case "youtube":
         return (
-          <div className="aspect-video bg-zinc-800 rounded-md flex items-center justify-center">
-            <div className="text-center">
-              <Youtube className="h-12 w-12 mx-auto mb-2 text-red-500" />
-              <p className="text-zinc-400">YouTube Video Embedded</p>
-              <p className="text-zinc-500 text-sm mt-1">{module.data?.url}</p>
-            </div>
-          </div>
+          // <div className="aspect-video bg-zinc-800 rounded-md flex items-center justify-center">
+          //   <YouTubeEmbed url={module.data?.url} />            
+          // </div>
+          <YouTubeEmbed url={module.data?.url} /> 
         )
       case "pdf":
         return (
