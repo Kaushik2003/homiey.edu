@@ -3,6 +3,8 @@ import CourseCreationCard from "../ui/CourseCreationCard";
 import CourseMarketPlaceCard from "../ui/CourseMarketPlaceCard";
 
 import FeaturedCourses from "../ui/FeaturedCourses";
+import Component from "../Component";
+import CertificateMintingForm from "../ui/MintCertificate";
 
 export const CourseMarketPlace = () => {
   return (
@@ -83,7 +85,9 @@ export const CourseMarketPlace = () => {
                 </div>
               </div>
 
-              <FeaturedCourses/>
+              <CertificateMintingForm/>
+              {/* <Component/> */}
+              {/* <FeaturedCourses/> */}
             </main>
           </div>
         </div>

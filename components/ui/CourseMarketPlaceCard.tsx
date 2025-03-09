@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const CourseMarketPlaceCard = () => {
@@ -14,15 +15,15 @@ const CourseMarketPlaceCard = () => {
         Discover and purchase unique courses as NFTs with secure blockchain
         technology.
       </p>
-      <a
-        href="#"
+      <Link
+        href="/course-marketplace"
         className="inline-flex items-center px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all duration-200 group-hover:shadow-lg"
       >
         <span>Browse Marketplace</span>
         <span className="material-symbols-outlined ml-2 transform group-hover:translate-x-1 transition-transform">
         
         </span>
-      </a>
+      </Link>
     </div>
   );
 };

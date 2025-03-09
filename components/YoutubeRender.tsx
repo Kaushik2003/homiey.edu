@@ -23,8 +23,8 @@ const YouTubeEmbed = ({ url }) => {
     <div className="w-full">
       <div className="relative" style={{ paddingBottom: "56.25%", height: 0 }}>
         <iframe
-          width="560"
-          height="315"
+          width="810"
+          height="450"
           src={`https://www.youtube.com/embed/${videoId}`}
           title="YouTube video player"
           frameborder="0"

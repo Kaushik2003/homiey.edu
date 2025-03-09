@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // Change to match your database (e.g., "mysql", "sqlite")
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id            String     @id @default(uuid())
+  title         String
+  description   String
+  price         Float
+  duration      String
+  category      String
+  level         String
+  image         String
+  publishedDate DateTime
+  students      Int
+  instructorId  String
+  instructor    Instructor @relation(fields: [instructorId], references: [id])
+  sections      Section[]
+}
+
+model Instructor {
+  id       String   @id @default(uuid())
+  name     String   @unique
+  courses  Course[]
+}
+
+model Section {
+  id       String   @id @default(uuid())
+  title    String
+  courseId String
+  course   Course   @relation(fields: [courseId], references: [id])
+  lessons  Lesson[]
+}
+
+model Lesson {
+  id         String   @id @default(uuid())
+  title      String
+  duration   String
+  sectionId  String
+  section    Section  @relation(fields: [sectionId], references: [id])
+}
