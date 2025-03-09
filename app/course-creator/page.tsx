@@ -9,6 +9,7 @@ import ModuleBlock from "@/components/module-block"
 import EmbedToolbar from "@/components/embed-toolbar"
 import QuizApp from "@/components/quiz/page"
 import CourseQuiz from "@/components/CourseQuiz"
+import CertificateMintingForm from "@/components/ui/MintCertificate"
 
 export type Module = {
   id: string
@@ -143,6 +144,7 @@ export default function CourseCreator() {
       numQuestions={10}
       goBack={() => console.log("Going back!")}
     />
+    <CertificateMintingForm />
     </div>
   )
 }
