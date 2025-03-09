@@ -33,7 +33,7 @@ interface QuizQuestion {
 type QuizProps = {
   classname?: string
   subj?: string
-  topic?: string[]
+  topic?: string
   numQuestions?: number
   goBack?: () => void
 }
@@ -41,7 +41,7 @@ type QuizProps = {
 export default function CourseQuiz({
   classname: propClassname = "Computer Science",
   subj: propSubj = "",
-  topic: propTopic = [],
+  topic: propTopic = "",
   numQuestions: propNumQuestions = 5,
   goBack,
 }: QuizProps) {
