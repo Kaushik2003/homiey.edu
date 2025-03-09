@@ -13,7 +13,7 @@ export default function Home() {
       </main>
       <footer className="border-t border-gray-800 py-6 mt-12">
         <div className="container mx-auto px-4 text-center text-gray-500 text-sm">
-          © {new Date().getFullYear()} Crypto Course Marketplace. All rights reserved.
+          © {new Date().getFullYear()} Homiey Course Marketplace. All rights reserved.
         </div>
       </footer>
     </div>
