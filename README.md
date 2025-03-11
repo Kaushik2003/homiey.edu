@@ -33,7 +33,7 @@ Check out the live version: [Homiey](https://homiey.vercel.app/)
 ## 📦 Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Debanjannnn/Homiey
+   git clone https://github.com/Kaushik2003/homiey.edu.git
    cd homiey
    ```
 2. Install dependencies:
