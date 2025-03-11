@@ -44,9 +44,7 @@ Check out the live version: [Homiey](https://homiey.vercel.app/)
    Create a `.env` file in the root directory and add the following:
    ```env
    DATABASE_URL="your-database-url"
-   OPENAI_API_KEY="your-openai-api-key"
-   NEXTAUTH_SECRET="your-nextauth-secret"
-   NEXTAUTH_URL="http://localhost:3000"
+   GOOGLE_API_KEY="your-openai-api-key"
    ```
 
 4. Run database migrations:
